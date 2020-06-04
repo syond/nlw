@@ -42,7 +42,9 @@ class PointsController {
             longitude,
         }
 
-        const insertedIds = await knex('points').insert(point);
+        const trx = await knex.transaction();
+
+        const insertedIds = await trx('points').insert(point);
     
         const point_id = insertedIds[0];
     
@@ -53,7 +55,9 @@ class PointsController {
             }
         });
     
-        await knex('points_items').insert(pointItems);
+        await trx('points_items').insert(pointItems);
+
+        await trx.commit();
     
         return response.json({ 
             id: point_id,
