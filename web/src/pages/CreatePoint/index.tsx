@@ -30,12 +30,18 @@ const CreatePoint = () => {
     const [items, setItems]             = useState<Item[]>([]);
     const [ufs, setUfs]                 = useState<string[]>([]);
     const [cities, setCities]           = useState<string[]>([]);
+    const [formData, setFormData]       = useState({
+        name: '',
+        email: '',
+        whatsapp: '',
+    });
 
     const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
 
     const [selectedUf, setSelectedUf]               = useState('0');
     const [selectedCity, setSelectedCity]           = useState('0');
     const [selectedPosition, setSelectedPosition]   = useState<[number, number]>([0, 0]);
+
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
@@ -69,6 +75,14 @@ const CreatePoint = () => {
         );
     }, [selectedUf]);
     
+
+    function handleInputChange(event: ChangeEvent<HTMLInputElement>){
+        const { name, value } = event.target;
+
+        console.log(name, value);
+
+        setFormData({ ...formData, [name]: value });
+    }
 
     function handleSelectUf(event: ChangeEvent<HTMLSelectElement>){
         const uf = event.target.value;
@@ -114,6 +128,7 @@ const CreatePoint = () => {
                                 <input type="text"
                                     name="name"
                                     id="name"
+                                    onChange={handleInputChange}
                                 />
                             </div>
 
@@ -123,6 +138,7 @@ const CreatePoint = () => {
                                 <input type="email"
                                     name="email"
                                     id="email"
+                                    onChange={handleInputChange}
                                 />
                             </div>
 
@@ -131,6 +147,7 @@ const CreatePoint = () => {
                                 <input type="text"
                                     name="whatsapp"
                                     id="whatsapp"
+                                    onChange={handleInputChange}
                                 />
                             </div>
                         </div>
