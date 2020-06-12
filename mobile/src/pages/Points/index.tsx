@@ -75,8 +75,8 @@ export default function Points() {
     navigation.goBack();
   }
 
-  function handleNavigateToDetail() {
-    navigation.navigate('Detail');
+  function handleNavigateToDetail(point: number) {
+    navigation.navigate('Detail', { point_id: point});
   }
 
   function handleSelectedItem(id: number){
@@ -124,7 +124,7 @@ export default function Points() {
                         latitude: point.latitude,
                         longitude: point.longitude,
                       }}
-                      onPress={handleNavigateToDetail}
+                      onPress={() => handleNavigateToDetail(point.id)}
                     >
                       <View style={styles.mapMarkerContainer}>
                         <Image style={styles.mapMarkerImage} source={{ uri: point.image}} />
