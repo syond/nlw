@@ -43,7 +43,10 @@ export default function Home() {
 
 
   function handleNavigateToPoints() {
-    navigation.navigate('Points');
+    navigation.navigate('Points', {
+      selectedUf,
+      selectedCity,
+    });
   }
 
   function handleSelectUf(value: string) {
@@ -72,62 +75,67 @@ export default function Home() {
       </View>
 
       <View style={styles.footer}>
+        <View style={styles.select}>
+          <RNPickerSelect
+            onValueChange={(value) => handleSelectUf(value)}
+            //pickerProps={{style: styles.input}}
+            style={{
+              ...pickerSelectStyles,
+              iconContainer: {
+                height: 60,
+                width: 60,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }
+            }}
+            Icon={() => {
+              return <Icon name="chevron-down" size={18} color="gray" />;
+            }}
+            useNativeAndroidPickerStyle={false}
+            doneText="Selecionar"
+            placeholder={{
+              label: 'Selecione um estado',
+              value: null,
+              color: '#9EA0A4',
+            }}
+            items={[] = (ufs.map(uf => (
+              {
+                key: uf,
+                label: uf,
+                value: uf,
+              }
+            )))}
+          />
 
-        <RNPickerSelect
-          onValueChange={(value) => handleSelectUf(value)}
-          //pickerProps={{style: styles.input}}
-          style={{...pickerSelectStyles,
-            iconContainer: {
-              height: 60,
-              width: 60,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}}
-          Icon={() => {
-            return <Icon name="chevron-down" size={18} color="gray" />;
-          }}
-          useNativeAndroidPickerStyle={false}
-          doneText="Selecionar"
-          placeholder={{
-            label: 'Selecione um estado', 
-            value: null,
-            color: '#9EA0A4',
-          }}
-          items={[] = (ufs.map(uf => (
-            {
-              key: uf,
-              label: uf,
-              value: uf,
-            }
-          )))}
-        />
-
-        <RNPickerSelect
-          onValueChange={(value) => handleSelectCity(value)}
-          style={{...pickerSelectStyles,
-            iconContainer: {
-              height: 60,
-              width: 60,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}}
-          Icon={() => {
-            return <Icon name="chevron-down" size={18} color="gray" />;
-          }}
-          doneText="Selecionar"
-          placeholder={{
-            label: 'Selecione uma cidade', 
-            value: null,
-            color: '#9EA0A4',
-          }}
-          items={[] = (cities.map(city => (
-            {
-              key: city,
-              label: city,
-              value: city,
-            }
-          )))}
-        />
+          <RNPickerSelect
+            onValueChange={(value) => handleSelectCity(value)}
+            style={{
+              ...pickerSelectStyles,
+              iconContainer: {
+                height: 60,
+                width: 60,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }
+            }}
+            Icon={() => {
+              return <Icon name="chevron-down" size={18} color="gray" />;
+            }}
+            doneText="Selecionar"
+            placeholder={{
+              label: 'Selecione uma cidade',
+              value: null,
+              color: '#9EA0A4',
+            }}
+            items={[] = (cities.map(city => (
+              {
+                key: city,
+                label: city,
+                value: city,
+              }
+            )))}
+          />
+        </View>
 
         <RectButton style={styles.button} onPress={handleNavigateToPoints}>
           <View style={styles.buttonIcon}>
@@ -175,7 +183,7 @@ const styles = StyleSheet.create({
   footer: {},
 
   select: {
-
+    marginBottom: 20,
   },
 
   input: {
@@ -220,7 +228,7 @@ const pickerSelectStyles = StyleSheet.create({
     height: 60,
     backgroundColor: '#FFF',
     borderRadius: 10,
-    marginBottom: 8,
+    marginBottom: 10,
     paddingHorizontal: 24,
     fontSize: 16,
   },
@@ -228,7 +236,7 @@ const pickerSelectStyles = StyleSheet.create({
     height: 60,
     backgroundColor: '#FFF',
     borderRadius: 10,
-    marginBottom: 8,
+    marginBottom: 10,
     paddingHorizontal: 24,
     fontSize: 16,
   },

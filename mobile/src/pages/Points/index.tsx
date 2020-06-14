@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Image, SafeAreaView, Alert } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg';
 import api from '../../services/api';
 import * as Location from 'expo-location';
-
 
 interface Item {
   id: number;
@@ -22,14 +21,22 @@ interface Point{
   longitude: number;
 }
 
+interface Params{
+  selectedUf: string,
+  selectedCity: string,
+}
+
 export default function Points() {
-  const navigation = useNavigation();
+  const navigation  = useNavigation();
+  const route       = useRoute();
+  const routeParams = route.params as Params;
 
   const [items, setItems]                       = useState<Item[]>([]);
   const [selectedItems, setSelectedItems]       = useState<number[]>([]);
   const [initialPosition, setInitialPosition]   = useState<[number, number]>([0,0]);
   const [points, setPoints]                     = useState<Point[]>([]);
-
+  
+  console.log(routeParams.selectedUf, routeParams.selectedCity);
 
   useEffect(() => {
     api.get('items').then(response => {
@@ -61,14 +68,15 @@ export default function Points() {
   useEffect(() => {
     api.get('points', {
       params: {
-        city: 'Cabo Frio',
-        uf: 'RJ',
-        items: [2,3],
+        city: routeParams.selectedCity,
+        uf: routeParams.selectedUf,
+        items: selectedItems,
       }
     }).then(response => {
       setPoints(response.data);
+
     });
-  }, [])
+  }, [selectedItems])
 
   
   function handleNavigateBack() {
@@ -90,7 +98,6 @@ export default function Points() {
       setSelectedItems([ ...selectedItems, id]);
     }
   }
-
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
