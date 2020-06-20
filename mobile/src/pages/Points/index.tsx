@@ -36,7 +36,6 @@ export default function Points() {
   const [initialPosition, setInitialPosition]   = useState<[number, number]>([0,0]);
   const [points, setPoints]                     = useState<Point[]>([]);
   
-  console.log(routeParams.selectedUf, routeParams.selectedCity);
 
   useEffect(() => {
     api.get('items').then(response => {
