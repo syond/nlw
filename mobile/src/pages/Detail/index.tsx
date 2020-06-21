@@ -14,6 +14,7 @@ interface Params {
 interface Data {
   point: {
     image: string,
+    image_url: string;
     name: string,
     email: string,
     whatsapp: number,
@@ -67,7 +68,7 @@ export default function Detail() {
           <Icon name="arrow-left" size={20} color={"#34cb79"}></Icon>
         </TouchableOpacity>
 
-        <Image style={styles.pointImage} source={{ uri: data.point.image }} />
+        <Image style={styles.pointImage} source={{ uri: data.point.image_url }} />
 
         <Text style={styles.pointName}>{data.point.name}</Text>
         <Text style={styles.pointItems}>{data.items.map(item => item.title).join(', ')}</Text>
