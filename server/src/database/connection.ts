@@ -1,8 +1,10 @@
 import knex from 'knex';
 import path from 'path';
 
+require('dotenv').config();
+
 const connection = knex({
-    client: 'sqlite3',
+    client: process.env.DB_CLIENT,
     connection: {
        filename: path.resolve(__dirname, 'database.sqlite'),
     },
