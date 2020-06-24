@@ -40,7 +40,7 @@ class PointsController {
 
         const serializedPoint = {
             ...point,
-            image_url: `http://192.168.1.91:3001/uploads/public/${point.image}`,
+            image_url: `http://${process.env.HOST}:${process.env.PORT}/uploads/public/${point.image}`,
         }
 
         const items = await knex('items')
