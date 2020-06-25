@@ -22,10 +22,10 @@ Before you start, you need to clone the repository using `git clone`.
 
 2. Now we need to configure the enviroments variable. Inside each project folder you'll see a `.env.example` file, rename it to just `.env`, open each one and configure with your informations.
 
-3. Ok! Now server project has a specific configuration, just run the following commands inside the server folder:
+3. Ok! Now server project has a specific configuration, just run the following commands inside the server folder to prepare all the database:
 
-    - `npx knex migrate:latest (to run migrations)`
-    - `npx knex seed:run (to run seeds)`
+    - `npx knex migrate:latest`
+    - `npx knex seed:run`
 
 4. Just run `npm run dev` for Server, and `npm start` for Web and Mobile. 
 
