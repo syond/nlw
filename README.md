@@ -7,8 +7,8 @@
 </h4>
 
 <p align="center">
-  <a href="https://gifyu.com/image/uP9h"><img src="https://s7.gifyu.com/images/demo-ecoleta-web.md.gif" alt="demo-ecoleta-web.md.gif" border="0"></a>
-  <a href="https://gifyu.com/image/uP9v"><img src="https://s7.gifyu.com/images/demo-ecoleta-mobile.md.gif" width="auto" height="400" alt="demo-ecoleta-mobile.md.gif" border="0"></a>
+  <img src="https://media.giphy.com/media/SXZCtunyeqIHC7W64Q/giphy.gif" width="auto" height="400" alt="demo-ecoleta-web.md.gif" border="0"></a>
+  <img src="https://media.giphy.com/media/STlWQfKjLDRjuMbAZr/giphy.gif" width="auto" height="400" alt="demo-ecoleta-mobile.md.gif" border="0"></a>
 </p>
 
 ---
