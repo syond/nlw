@@ -6,6 +6,11 @@
     A FullStack application developed with awesome technologies :)
 </h4>
 
+<p align="center">
+  <a href="https://gifyu.com/image/uP9h"><img src="https://s7.gifyu.com/images/demo-ecoleta-web.md.gif" alt="demo-ecoleta-web.md.gif" border="0"></a>
+  <a href="https://gifyu.com/image/uP9v"><img src="https://s7.gifyu.com/images/demo-ecoleta-mobile.md.gif" width="auto" height="400" alt="demo-ecoleta-mobile.md.gif" border="0"></a>
+</p>
+
 ---
 
 ## :coffee: About
